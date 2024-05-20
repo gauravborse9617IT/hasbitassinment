@@ -1,0 +1,68 @@
+JS DOM Assignment - Hide Show Para
+(html)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Show Paragraphs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        p {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hide Show Paragraphs</h1>
+        <button onclick="toggleParagraph(1)">Toggle Paragraph 1</button>
+        <button onclick="toggleParagraph(2)">Toggle Paragraph 2</button>
+        <button onclick="toggleParagraph(3)">Toggle Paragraph 3</button>
+        
+        <p id="para1">Paragraph 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="para2">Paragraph 2 - Nulla eget arcu vel libero egestas rhoncus at sit amet justo.</p>
+        <p id="para3">Paragraph 3 - Maecenas id ipsum eu mi condimentum convallis.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+(javascript)
+function toggleParagraph(paraNum) {
+    const paragraph = document.getElementById(`para${paraNum}`);
+    if (paragraph.style.display === 'none') {
+        paragraph.style.display = 'block';
+    } else {
+        paragraph.style.display = 'none';
+    }
+}
+

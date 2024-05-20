@@ -1,0 +1,78 @@
+JS DOM Assignment - Dynamic - CSS
+(HTMl)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic CSS Assignment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #cssPreview {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dynamic CSS Assignment</h1>
+        <textarea id="cssInput" placeholder="Enter your CSS rules here"></textarea>
+        <button onclick="applyCSS()">Apply CSS</button>
+        <div id="cssPreview">
+            <p>This is a preview element.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+(javascript)
+function applyCSS() {
+    const cssInput = document.getElementById('cssInput').value;
+    const cssPreview = document.getElementById('cssPreview');
+
+    // Clear previous styles
+    cssPreview.style.cssText = '';
+
+    try {
+        cssPreview.style.cssText = cssInput;
+    } catch (error) {
+        console.error('Invalid CSS syntax:', error.message);
+    }
+}
+

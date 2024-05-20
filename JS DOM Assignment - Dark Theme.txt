@@ -1,0 +1,68 @@
+JS DOM Assignment - Dark Theme
+code:-
+(html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Toggle</title>
+    <style>
+        body {
+            transition: background-color 0.3s ease;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            color: #333;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        .dark-mode .container {
+            background-color: #444;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <h1>Dark Theme Assignment</h1>
+        <p>This is a simple example of a dark theme using JavaScript and the DOM.</p>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
+    <script src="darktheme.js"></script>
+</body>
+</html>
+
+(javaScript)
+
+const toggleButton = document.querySelector('button');
+const content = document.getElementById('content');
+
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark' || (prefersDarkScheme.matches && currentTheme !== 'light')) {
+    document.body.classList.toggle('dark-mode');
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+}
+
+

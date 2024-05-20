@@ -1,0 +1,98 @@
+JS DOM Assignment - Div Creation
+(HTML)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Div Creation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .item {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="itemContainer">
+        <h1>Dynamic Div Creation</h1>
+        <div id="items">
+            <!-- Dynamically created div elements will be appended here -->
+        </div>
+        <form id="addItemForm">
+            <input type="text" id="itemContent" placeholder="Enter content for new div">
+            <button type="submit">Add Div</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+(JavaScript)
+function createNewDiv(content) {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('item');
+    newDiv.textContent = content;
+    return newDiv;
+}
+
+function addNewDiv(content) {
+    const itemsContainer = document.getElementById('items');
+    const newDiv = createNewDiv(content);
+    itemsContainer.appendChild(newDiv);
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const itemInput = document.getElementById('itemContent');
+    const content = itemInput.value.trim();
+
+    if (content !== '') {
+        addNewDiv(content);
+        itemInput.value = '';
+    } else {
+        alert('Please enter content for the new div.');
+    }
+}
+
+const addItemForm = document.getElementById('addItemForm');
+addItemForm.addEventListener('submit', handleSubmit);
+
